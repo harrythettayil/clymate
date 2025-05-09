@@ -26,7 +26,7 @@ function App() {
         <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
           <Layout>
             <Routes>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/clymate/" element={<Dashboard />} />
               <Route path="/city/:cityName" element={<City />} />
             </Routes>
           </Layout>
