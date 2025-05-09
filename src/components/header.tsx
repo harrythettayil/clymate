@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ThemeToggle } from "./theme-toggle";
+import { CitySearch } from "./city-search";
 
 const Header = () => {
   return (
@@ -8,7 +9,8 @@ const Header = () => {
         <Link to={"/"}>
           <img src="/clymate.svg" alt="clymate logo" className="h-14" />
         </Link>
-        <div>
+        <div className="flex gap-4">
+          <CitySearch />
           <ThemeToggle />
         </div>
       </div>

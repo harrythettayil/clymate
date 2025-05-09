@@ -3,6 +3,8 @@ import { HourlyTemperature } from "@/components/hourly-temprature";
 import WeatherSkeleton from "@/components/loading";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
+import { WeatherDetails } from "@/components/weather-details";
+import { WeatherForecast } from "@/components/weather-forecast";
 import { useGeolocation } from "@/hooks/use-geolocation";
 import { useForecastQuery, useReverseGeocodeQuery, useWeatherQuery } from "@/hooks/use-weather";
 import { AlertTriangle, MapPin, RefreshCw } from "lucide-react";
@@ -91,12 +93,13 @@ const Dashboard = () => {
         </Button>
       </div>
       <div className="grid gap-6">
-        <div>
-          {weatherQuery.isFetched && <CurrentWeather data={weatherQuery.data} locationName={locationName} />}
+        <div className="flex flex-col lg:flex-row gap-4">
+          {weatherQuery.isFetched && <CurrentWeather data={weatherQuery.data} locationName={locationName} /> }
           {forecastQuery.isFetched && <HourlyTemperature data={forecastQuery.data} />}
         </div>
-        <div>
-
+        <div className="grid gap-6 md:grid-cols-2 items-start">
+          {weatherQuery.isFetched && <WeatherDetails data={weatherQuery.data}/> }
+          {forecastQuery.isFetched && <WeatherForecast data={forecastQuery.data} />}
         </div>
       </div>
     </div>
