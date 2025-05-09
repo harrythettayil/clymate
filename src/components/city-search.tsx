@@ -15,7 +15,7 @@ import {
   CommandSeparator,
 } from "@/components/ui/command";
 import { Button } from "@/components/ui/button";
-//import { useFavorites } from "@/hooks/use-favorite";
+import { useFavorites } from "@/hooks/use-favorite";
 
 export function CitySearch() {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ export function CitySearch() {
   const navigate = useNavigate();
 
   const { data: locations, isLoading } = useLocationSearch(query);
-  // const { favorites } = useFavorites();
+  const { favorites } = useFavorites();
   const { history, clearHistory, addToHistory } = useSearchHistory();
 
   const handleSelect = (cityData: string) => {
@@ -64,7 +64,6 @@ export function CitySearch() {
               <CommandEmpty>No cities found.</CommandEmpty>
             )}
 
-            {/* Favorites Section
             {favorites.length > 0 && (
               <CommandGroup heading="Favorites">
                 {favorites.map((city) => (
@@ -86,7 +85,7 @@ export function CitySearch() {
                   </CommandItem>
                 ))}
               </CommandGroup>
-            )} */}
+            )}
 
             {/* Search History Section */}
             {history.length > 0 && (

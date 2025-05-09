@@ -6,10 +6,10 @@ import { CurrentWeather } from "../components/current-weather";
 import { HourlyTemperature } from "../components/hourly-temprature";
 import { WeatherDetails } from "../components/weather-details";
 import { WeatherForecast } from "../components/weather-forecast";
-import { FavoriteButton } from "@/components/favorite-button";
+import { FavoriteButton } from "@/components/ui/favorite-button";
 import WeatherSkeleton from "@/components/loading";
 
-export function CityPage() {
+export default function CityPage() {
   const [searchParams] = useSearchParams();
   const params = useParams();
   const lat = parseFloat(searchParams.get("lat") || "0");
@@ -42,9 +42,9 @@ export function CityPage() {
           {params.cityName}, {weatherQuery.data.sys.country}
         </h1>
         <div className="flex gap-2">
-          <FavoriteButton
+            {weatherQuery.isFetched && <FavoriteButton
             data={{ ...weatherQuery.data, name: params.cityName }}
-          />
+          />}
         </div>
       </div>
 
