@@ -96,12 +96,12 @@ const Dashboard = () => {
       </div>
       <div className="grid gap-6">
         <div className="flex flex-col lg:flex-row gap-4">
-          {weatherQuery.isFetched && <CurrentWeather data={weatherQuery.data} locationName={locationName} /> }
-          {forecastQuery.isFetched && <HourlyTemperature data={forecastQuery.data} />}
+          {weatherQuery.isFetched && weatherQuery.data && <CurrentWeather data={weatherQuery.data} locationName={locationName} /> }
+          {forecastQuery.isFetched && forecastQuery.data && <HourlyTemperature data={forecastQuery.data} />}
         </div>
         <div className="grid gap-6 md:grid-cols-2 items-start">
-          {weatherQuery.isFetched && <WeatherDetails data={weatherQuery.data}/> }
-          {forecastQuery.isFetched && <WeatherForecast data={forecastQuery.data} />}
+          {weatherQuery.isFetched && weatherQuery.data && <WeatherDetails data={weatherQuery.data}/> }
+          {forecastQuery.isFetched && forecastQuery.data && <WeatherForecast data={forecastQuery.data} />}
         </div>
       </div>
     </div>
